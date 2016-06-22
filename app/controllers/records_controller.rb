@@ -7,9 +7,9 @@ class RecordsController < ApplicationController
     @record = Record.new(record_params)
 
     if @record.save
-      render json: @record
+      render json: @record, status: 201
     else
-      render json: @record.errors, status: :unprocessable_entity
+      render json: @record.errors, status: 422
     end
   end
 
@@ -18,7 +18,7 @@ class RecordsController < ApplicationController
     if @record.update(record_params)
       render json: @record
     else
-      render json: @record.errors, status: :unprocessable_entity
+      render json: @record.errors, status: 422
     end
   end
 
